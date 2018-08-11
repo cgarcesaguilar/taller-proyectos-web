@@ -1,0 +1,122 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Clase Uno de jQuery</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+	<!-- comentario -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<p id="textoUno">No shit! Right now you're Fredo. But, y'know, with some sound advice and proper introductions, who knows? I'll tell you one thing: you've got the right product. Anything that gets the DEA's panties in this big a bunch, you're onto something special. And I would like to be a small and silent part of it. Food for thought, yeah? So if you want to make more money and keep the money that you make, better call Saul! </p>
+			</div>
+			<div class="col-3">
+				<button class="btn btn-primary" id="btnCambiaColor">Cambiar Color</button>
+			</div>
+
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<p id="textoDos">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, possimus ratione. Et, voluptate reiciendis accusamus, at aspernatur recusandae provident sapiente quam fugiat excepturi odit perspiciatis ut ullam. Dignissimos, porro, deserunt!</p>
+			</div>
+			<button class="btn btn-primary" id="btnHide">Hide</button>
+			<button class="btn btn-primary" id="btnShow">Show</button>
+			<button class="btn btn-primary" id="btnToggle">Toggle</button>
+			<button class="btn btn-primary" id="btnFadeOut">FadeOut</button>
+			<button class="btn btn-primary" id="btnFadeIn">FadeIn</button>
+			<button class="btn btn-primary" id="btnFadeToggle">FadeToggle</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Método html y text</h1>
+				<p id="textoTres">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sint autem error ducimus quisquam. Nulla obcaecati, quo recusandae. Deserunt aspernatur aperiam consectetur soluta, illum assumenda quae officiis adipisci quisquam consequuntur.
+				</p>
+				<button class="btn btn-primary" id="btnHtml">Método Html</button>
+				<button class="btn btn-primary" id="btnText">Método Text</button>
+
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>
+		//comentario una linea
+		/*
+		comentario multilinea
+		*/
+		//Seleccionamos el documento y cuando se encuentre listo
+		//ejecutamos una función definida o anónima.
+		$(document).ready(documentoListo)
+
+		function documentoListo(){
+
+			$("#btnCambiaColor").click(cambiarColor)
+			$("#btnHide").click(hideTexto)
+			$("#btnShow").click(showTexto)
+			$("#btnToggle").click(toggleTexto)
+			$("#btnFadeOut").click(fadeOutTexto)
+			$("#btnFadeIn").click(fadeInTexto)
+			$("#btnFadeToggle").click(fadeToggleTexto)
+			$("#btnHtml").click(modificarHtml)
+			$("#btnText").click(modificarTexto)
+	
+		}
+
+		function cambiarColor() {
+			//css("propiedad css", "valor")
+			//$("#textoUno").css("color", "red")
+			$("#textoUno").css({
+				"color": "green", 
+				"font-size" : "20px",
+				"background" : "black"
+			})
+		}
+
+		function hideTexto() {
+			//el método hide, oculta un elemento del DOM
+			$("#textoDos").hide(500)
+		}
+
+		function showTexto() {
+			//el método show, muestra un elemento oculto del DOM
+			$("#textoDos").show(500)
+		}
+
+		function toggleTexto() {
+			//el método toggle, oculta y muestra en la misma acción un elemento del DOM
+			$("#textoDos").toggle(500)
+		}
+
+		function fadeOutTexto() {
+			//el método fadeOut, fadeIn y fadeToggle, operan solo con el estilo de la opacidad, ocultan, mostrando y realizando ambas funciones a la vez, respectivamente
+			$("#textoDos").fadeOut(500)
+		}
+
+		function fadeInTexto() {
+			$("#textoDos").fadeIn(500)
+		}
+
+		function fadeToggleTexto() {
+			$("#textoDos").fadeToggle(500)
+		}
+
+		function modificarHtml () {
+			$("#textoTres").html('aquí estamos modificando el texto con el <b>método html</b>. que nos permite escribir etiquetas y texto plano <img src="http://www.aiep.cl/img/logo-420.png">')
+		}
+
+		function modificarTexto () {
+			$("#textoTres").text('aquí estamos modificando el texto con el <b>método text</b>. que nos permite escribir etiquetas y texto plano <img src="http://www.aiep.cl/img/logo-420.png">')
+		}
+
+
+	</script>
+
+</body>
+</html>

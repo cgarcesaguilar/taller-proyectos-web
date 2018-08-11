@@ -1,0 +1,71 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Clase Uno de jQuery</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<style>
+		.botonera {
+			position: fixed;
+			height: 100%;
+			background: black;
+			color: white;
+			width: 400px;
+			top:0;
+			left: -400px;
+			z-index: 1;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="botonera">
+		<h1>Aquí irían las opciones del menú</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<button class="btn float-right" id="btnDesplegar">
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore illo fugiat voluptas sit nostrum rerum eos excepturi consectetur ipsum nihil, at! Quos temporibus soluta inventore molestiae voluptatibus sapiente, enim laboriosam.</p>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var click = false
+			$("#btnDesplegar").click(animarMenu)
+			function animarMenu() {
+				if (click == false) {
+					$(".botonera").animate({
+						'left' : 0
+					}, 500, function () {
+						$("#btnDesplegar").html('<i class="fas fa-times"></i>')
+					})
+					
+					click = true
+				} else {
+					$(".botonera").animate({
+						'left' : '-400px'
+					}, 500, function (){
+						$("#btnDesplegar").html('<i class="fas fa-bars"></i>')
+					})
+
+					
+
+					click = false
+
+				}
+
+				
+			}
+		})
+	</script>
+</body>
+</html>

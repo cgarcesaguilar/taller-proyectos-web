@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Eventos</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<img id="imagen" src="img/azul.jpg" alt="" class="img-fluid">
+			</div>
+			<div class="col-6">
+				<form id="formulario">
+					<div class="form-group">
+						<label>Ingrese su nombre:</label>
+						<input type="text" placeholder="Ej. Juanito Perez" class="form-control" name="txt_nombre" id="campoNombre">
+						<small id="nombreUsuario" class="form-text"></small>
+					</div>
+					<div class="form-group">
+						<label>Seleccione color</label>
+						<select name="slt_color" id="selectColor" class="form-control">
+							<option value="azul" selected>Azul</option>
+							<option value="gris">Gris</option>
+							<option value="naranjo">Naranjo</option>
+							<option value="rojo">Rojo</option>
+							<option value="verde">Verde</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<div class="input-group mb-3">
+						  <div class="input-group-prepend">
+						    <button class="btn btn-outline-secondary" type="button" id="btnMenos">-</button>
+						  </div>
+						  <input type="text" class="form-control" value="1" id="cantidad">
+						  <div class="input-group-append">
+						    <button class="btn btn-outline-secondary" type="button" id="btnMas">+</button>
+						  </div>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary form-control" type="submit">Cotizar en línea</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+	<script>
+		$(document).ready(validarFormulario)
+
+		function validarFormulario() {
+
+			$("#campoNombre").blur(function() {
+				var texto = $(this).val()
+				$("#nombreUsuario").text(texto)	
+				$(this).val("")
+				swal({
+					  title: 'Gracias por escribir su nombre',
+					  text: 'Continue con su tarea',
+					  icon: 'success',
+					  confirmButtonText: 'Ok'
+					})
+			})
+
+			$("#selectColor").change(function() {
+
+				var color = $(this).val()
+
+				$("#imagen").attr("src", "img/"+color+".jpg")
+			
+			})
+			
+			var contador = 1
+			
+			$("#btnMas").click(function(){
+				contador = contador + 1
+
+				$("#cantidad").val(contador)
+			})
+
+			$("#btnMenos").click(function() {
+				
+				if ( contador > 1) {
+
+					contador = contador - 1
+					$("#cantidad").val(contador)	
+				
+				}
+				
+			})
+		
+		}
+	</script>
+</body>
+</html>
+
+
