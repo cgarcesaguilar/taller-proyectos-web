@@ -33,7 +33,7 @@
 						  <div class="input-group-prepend">
 						    <button class="btn btn-outline-secondary" type="button" id="btnMenos">-</button>
 						  </div>
-						  <input type="text" class="form-control" value="1" id="cantidad">
+						  <input type="text" class="form-control" value="1" id="cantidad" name="txt_cantidad">
 						  <div class="input-group-append">
 						    <button class="btn btn-outline-secondary" type="button" id="btnMas">+</button>
 						  </div>
@@ -45,6 +45,9 @@
 					</div>
 
 				</form>
+				<div id="respuestas">
+					
+				</div>
 			</div>
 		</div>
 	</div>
@@ -58,14 +61,16 @@
 
 			$("#campoNombre").blur(function() {
 				var texto = $(this).val()
-				$("#nombreUsuario").text(texto)	
-				$(this).val("")
-				swal({
+				$("#nombreUsuario").text(texto)
+
+				if ( $("#campoNombre").val() != "") {
+					swal({
 					  title: 'Gracias por escribir su nombre',
 					  text: 'Continue con su tarea',
 					  icon: 'success',
 					  confirmButtonText: 'Ok'
 					})
+				}
 			})
 
 			$("#selectColor").change(function() {
@@ -93,6 +98,25 @@
 				
 				}
 				
+			})
+
+			//El evento submit se ejecuta en el formulario
+			$("#formulario").submit(function(x){
+				//el evento submit trae consigo por defecto la recarga de la página. Debemos evitar su acción por defecto.
+				x.preventDefault()
+				
+				var datos = $("#formulario").serialize()
+				$.ajax({
+					url : "validar-datos.php",
+					type : "POST",
+					data : datos,
+					success: function (response) {
+						$("#respuestas").html(response)
+					}
+				})
+				console.log(datos)
+				$("#formulario")[0].reset()
+				$("#imagen").attr("src", "img/azul.jpg")
 			})
 		
 		}
